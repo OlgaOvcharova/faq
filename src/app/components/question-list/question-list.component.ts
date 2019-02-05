@@ -1,0 +1,22 @@
+import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../services/data.service';
+import { Question } from '../../models/Question';
+
+@Component({
+  selector: 'app-question-list',
+  templateUrl: './question-list.component.html',
+  styleUrls: ['./question-list.component.css']
+})
+export class QuestionListComponent implements OnInit{
+  questions: Object[];
+
+  constructor(public dataService: DataService) {}
+    
+  ngOnInit(){
+    this.questions = this.dataService.qetQuestions();
+  }
+
+  addQuestion(question: Question) {
+    this.dataService.addQuestion(question);
+  }
+}
